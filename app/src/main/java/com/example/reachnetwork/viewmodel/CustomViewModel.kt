@@ -10,4 +10,8 @@ class CustomViewModel: ViewModel() {
     fun fetchData(){
         repo.fetchData()
     }
+
+    fun getCategoriesLiveData() = repo.categoriesLiveData
+
+    fun getOffersLiveData() = repo.offersLiveData
 }

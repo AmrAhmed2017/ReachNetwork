@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">Reach Network</string>
+
+    <string name="discover">Discover</string>
+    <string name="offers">Offers</string>
+    <string name="profile">profile</string>
+    <string name="games_offers"><![CDATA[Games & offers]]></string>
 </resources>

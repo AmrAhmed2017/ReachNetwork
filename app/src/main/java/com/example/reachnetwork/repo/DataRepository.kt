@@ -1,11 +1,16 @@
 package com.example.reachnetwork.repo
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
+import com.example.reachnetwork.model.CategoriesResponse
+import com.example.reachnetwork.model.OfferResponse
 import com.example.reachnetwork.retrofit.RetrofitClient
 import kotlinx.coroutines.*
 
 object DataRepository{
 
+    var categoriesLiveData = MutableLiveData<CategoriesResponse>()
+    var offersLiveData = MutableLiveData<OfferResponse>()
     fun fetchData() {
         fetchDataFromAPI()
     }
@@ -35,15 +40,17 @@ object DataRepository{
              val categoriesResponse = RetrofitClient().getRetrofitClient(categoriesBaseURL).getCategories(categoriesEndPoint)
 
              withContext(Dispatchers.Main) {
-                 val s = categoriesResponse.data.get(0).name
-                 Log.v("====", "$s")
+                 categoriesLiveData.value = categoriesResponse
+//                 val s = categoriesResponse.data.get(0).name
+//                 Log.v("====", "$s")
         }
 
              val offersResponse = RetrofitClient().getRetrofitClient(offersBaseURL).getOffers(offersEndPoint)
 
              withContext(Dispatchers.Main) {
-                 val s = offersResponse.data.offers.data.get(0).cta_url
-                 Log.v("====", "$s")
+                 offersLiveData.value = offersResponse
+//                 val s = offersResponse.data.offers.data.get(0).cta_url
+//                 Log.v("====", "$s")
              }
          }
     }
