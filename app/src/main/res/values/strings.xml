@@ -5,4 +5,5 @@
     <string name="offers">Offers</string>
     <string name="profile">profile</string>
     <string name="games_offers"><![CDATA[Games & offers]]></string>
+    <string name="all_offers">All offers</string>
 </resources>

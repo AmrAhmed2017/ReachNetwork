@@ -44,7 +44,7 @@ class UserAdapter(val data: List<User>): RecyclerView.Adapter<UserAdapter.UserVi
                     .error(R.drawable.error_img)
                     .into(binding.coverPhoto)
 
-                binding.userTextView.text = item.name
+                binding.userTextView.text = item.username
             }
         }
 

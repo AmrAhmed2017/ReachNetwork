@@ -1,11 +1,11 @@
 package com.example.reachnetwork.view.discoverfragment
 
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,7 +25,9 @@ class DiscoverFragment : Fragment() {
         super.onCreate(savedInstanceState)
 
         viewModel = ViewModelProvider(this).get(CustomViewModel::class.java)
-        viewModel.fetchData()
+        viewModel.fetchDataFromAPI()
+
+
     }
 
     override fun onCreateView(
@@ -34,6 +36,9 @@ class DiscoverFragment : Fragment() {
     ): View {
         binding = DataBindingUtil.inflate(
             inflater, R.layout.fragment_discover, container, false)
+
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = this
         return binding.root
     }
 
@@ -48,12 +53,31 @@ class DiscoverFragment : Fragment() {
             LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
         binding.offersRecyclerView.addItemDecoration(RecyclerItemDecoration(8))
 
-        viewModel.getCategoriesLiveData().observe(viewLifecycleOwner, {
+        viewModel.categoriesLiveData.observe(viewLifecycleOwner, {
             binding.discoverRecyclerView.adapter = CategoriesAdapter(it.data, requireContext())
         })
 
-        viewModel.getOffersLiveData().observe(viewLifecycleOwner, {
+        viewModel.offersLiveData.observe(viewLifecycleOwner, {
             binding.offersRecyclerView.adapter = OffersAdapter(it.data.offers.data)
+        })
+
+        viewModel.filteredUsersLiveData.observe(viewLifecycleOwner, {
+            binding.discoverRecyclerView.adapter = CategoriesAdapter(it, requireContext())
+        })
+
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                if (p0 != null) {
+                    viewModel.filterUsers(p0)
+                }
+                return false
+            }
+            override fun onQueryTextChange(p0: String?): Boolean {
+                if (p0 != null) {
+                    viewModel.filterUsers(p0)
+                }
+                return false
+            }
         })
     }
 }

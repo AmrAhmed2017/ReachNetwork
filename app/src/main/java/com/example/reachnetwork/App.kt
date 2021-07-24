@@ -17,10 +17,6 @@ class App: Application() {
         }
     }
 
-    override fun onCreate() {
-        super.onCreate()
-    }
-
     fun getCasheDirectory() = cacheDir
 
 }

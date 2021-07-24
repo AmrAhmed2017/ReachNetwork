@@ -25,6 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         app:labelVisibilityMode="auto"
+        android:elevation="8dp"
+        android:background="@drawable/oval_shape"
         app:itemTextColor="@color/blue_600"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,8 +1,6 @@
 package com.example.reachnetwork.retrofit
 
 import com.example.reachnetwork.App
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import io.reactivex.schedulers.Schedulers
 import okhttp3.Cache
 import okhttp3.CacheControl
 import okhttp3.Interceptor
@@ -13,7 +11,6 @@ import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.File
 import java.util.concurrent.TimeUnit
-import javax.xml.XMLConstants
 
 class RetrofitClient {
 
@@ -29,8 +26,7 @@ class RetrofitClient {
         val networkCacheInterceptor = Interceptor { chain ->
             val response = chain.proceed(chain.request())
 
-            var cacheControl = CacheControl.Builder()
-                .maxAge(1, TimeUnit.MINUTES)
+            val cacheControl = CacheControl.Builder()
                 .build()
 
             response.newBuilder()

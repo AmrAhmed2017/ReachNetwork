@@ -7,35 +7,53 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="@dimen/image_width"
-            android:layout_height="@dimen/image_height"
-            android:id="@+id/profile_pic"
+        <androidx.cardview.widget.CardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="8dp"
+            android:elevation="2dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="@dimen/cover_photo_size"
-            android:layout_height="@dimen/cover_photo_size"
-            android:id="@+id/cover_photo"
-            android:layout_marginStart="@dimen/margin_start"
-            android:layout_marginBottom="@dimen/margin_start"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"/>
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/user_text_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_start"
-            android:textColor="@color/black"
-            android:textSize="@dimen/user_title_size"
-            android:textStyle="normal"
-            app:layout_constraintStart_toEndOf="@id/cover_photo"
-            app:layout_constraintTop_toTopOf="@id/cover_photo"
-            app:layout_constraintBottom_toBottomOf="@id/cover_photo"/>
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/image_width"
+                    android:layout_height="@dimen/image_height"
+                    android:id="@+id/profile_pic"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="@dimen/cover_photo_size"
+                    android:layout_height="@dimen/cover_photo_size"
+                    android:id="@+id/cover_photo"
+                    android:layout_marginStart="@dimen/margin_start"
+                    android:layout_marginBottom="@dimen/margin_start"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/user_text_view"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_start"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/user_title_size"
+                    android:textStyle="normal"
+                    app:layout_constraintStart_toEndOf="@id/cover_photo"
+                    app:layout_constraintTop_toTopOf="@id/cover_photo"
+                    app:layout_constraintBottom_toBottomOf="@id/cover_photo"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

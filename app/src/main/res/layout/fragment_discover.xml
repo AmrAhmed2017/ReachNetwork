@@ -4,20 +4,53 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data class="FragmentDiscoverBinding"/>
+    <data class="FragmentDiscoverBinding">
+        <variable
+            name="viewModel"
+            type="com.example.reachnetwork.viewmodel.CustomViewModel" />
+    </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <EditText
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:id="@+id/edit"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/search_parent"
+            android:background="@color/blue_800"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:background="@color/blue_600"/>
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.appcompat.widget.SearchView
+
+                android:id="@+id/search_view"
+                android:layout_width="250dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/oval_shape"
+                app:queryHint="Search for brands..."
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:iconifiedByDefault="false"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:id="@+id/search_img"
+                android:src="@drawable/search_icon"
+                android:layout_marginEnd="4dp"
+                app:layout_constraintStart_toEndOf="@id/search_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@id/search_view"
+                app:layout_constraintBottom_toBottomOf="@id/search_view"/>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
@@ -28,18 +61,48 @@
             android:textSize="@dimen/text_title_size"
             android:textStyle="bold"
             android:layout_marginTop="@dimen/margin_top"
-            android:layout_marginStart="@dimen/margin_start"
-            app:layout_constraintTop_toBottomOf="@+id/edit"
+            android:layout_marginStart="@dimen/margin_top"
+            app:layout_constraintTop_toBottomOf="@+id/search_parent"
             app:layout_constraintStart_toStartOf="parent"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/all_offers_btn"
+            android:text="@string/all_offers"
+            android:textSize="@dimen/category_title_size"
+            android:textColor="@color/blue_800"
+            android:backgroundTint="@color/blue_100"
+            app:cornerRadius="8dp"
+            android:textAllCaps="false"
+            android:layout_marginEnd="@dimen/margin_top"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/offers_text_view"
+            app:layout_constraintBottom_toBottomOf="@+id/offers_text_view"/>
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/offers_recycler_view"
             android:orientation="horizontal"
+            android:layout_marginStart="@dimen/margin_top"
+            android:layout_marginEnd="@dimen/margin_top"
+            android:layout_marginTop="@dimen/margin_top"
             app:layout_constraintTop_toBottomOf="@id/offers_text_view"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/discover_parent"
+            android:background="@color/gray_50"
+            android:elevation="2dp"
+            android:layout_marginTop="@dimen/margin_top"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/offers_recycler_view">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:layout_width="wrap_content"
@@ -49,18 +112,19 @@
             android:textColor="@color/black"
             android:textSize="@dimen/text_title_size"
             android:textStyle="bold"
-            android:layout_marginTop="@dimen/margin_top"
-            android:layout_marginStart="@dimen/margin_start"
-            app:layout_constraintTop_toBottomOf="@+id/offers_recycler_view"
-            app:layout_constraintStart_toStartOf="parent"/>
+            android:layout_margin="@dimen/margin_top" />
+
+        </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
             android:id="@+id/discover_recycler_view"
             android:orientation="vertical"
-            android:layout_marginTop="@dimen/margin_start"
-            app:layout_constraintTop_toBottomOf="@id/discover_text_view"
+            android:layout_marginStart="@dimen/margin_top"
+            android:layout_marginEnd="@dimen/margin_top"
+            app:layout_constraintTop_toBottomOf="@+id/discover_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
