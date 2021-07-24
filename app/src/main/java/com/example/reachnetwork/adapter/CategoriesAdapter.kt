@@ -1,7 +1,6 @@
 package com.example.reachnetwork.adapter
 
 import android.content.Context
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -11,7 +10,6 @@ import com.example.reachnetwork.R
 import com.example.reachnetwork.databinding.DiscoverItemBinding
 import com.example.reachnetwork.model.Category
 import com.example.reachnetwork.util.RecyclerItemDecoration
-import com.example.reachnetwork.viewmodel.CustomViewModel
 
 class CategoriesAdapter(val data: List<Category>, private val context: Context): RecyclerView.Adapter<CategoriesAdapter.CategoriesViewHolder>() {
 

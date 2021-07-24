@@ -1,11 +1,6 @@
 package com.example.reachnetwork.repo
 
-import android.util.Log
-import androidx.lifecycle.MutableLiveData
-import com.example.reachnetwork.model.CategoriesResponse
-import com.example.reachnetwork.model.OfferResponse
 import com.example.reachnetwork.retrofit.RetrofitClient
-import kotlinx.coroutines.*
 
 object DataRepository{
 

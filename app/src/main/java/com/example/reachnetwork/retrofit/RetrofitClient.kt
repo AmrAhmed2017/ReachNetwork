@@ -34,13 +34,13 @@ class RetrofitClient {
 
         val networkCacheInterceptor = Interceptor { chain ->
             val response = chain.proceed(chain.request())
-            val cacheControl = response.header("Cache-Control");
+            val cacheControl = response.header("Cache-Control")
             if (cacheControl == null || cacheControl.contains("no-store") || cacheControl.contains("no-cache") ||
                 cacheControl.contains("must-revalidate") || cacheControl.contains("max-age=0")) {
                 response.newBuilder()
                     .removeHeader("Pragma")
                     .header("Cache-Control", "public, max-age=" + 5000)
-                    .build();
+                    .build()
             } else response
         }
 

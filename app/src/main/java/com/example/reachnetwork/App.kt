@@ -16,7 +16,4 @@ class App: Application() {
             return instance!!.applicationContext
         }
     }
-
-    fun getCasheDirectory() = cacheDir
-
 }
